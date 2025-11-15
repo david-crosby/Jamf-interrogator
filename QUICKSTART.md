@@ -3,6 +3,7 @@
 TL/DR README.md then use this, get up and running in 2 minutes.
 
 WARNING: this is still WIP for me!
+NO WARRANTY, SHARED AS IS.
 
 ## Install
 
