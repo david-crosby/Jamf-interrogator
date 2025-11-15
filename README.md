@@ -8,6 +8,8 @@ THIS IS WIP, STILL A WORKING DRAFT!
 
 NO WARRANTY, SHARED AS IS.
 
+Need the quick docs see the quickstart guide.
+
 ## What it does
 
 - List policies, computers, scripts and other resources

@@ -1,7 +1,7 @@
 [project]
 name = "jamf-interrogator"
 version = "0.1.0"
-description = "Add your description here"
+description = "A cli tool for exploring and analysing your jamf environment. Built for quick queries and practical day-to-day operations."
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = []

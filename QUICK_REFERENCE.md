@@ -1,8 +1,8 @@
-# jamf interrogator - quick reference
+# Jamf Interrogator - Very quick reference
 
-common tasks and one-liners for everyday use.
+Common tasks and one-liners for everyday use.
 
-## logging
+## Logging
 
 ```bash
 # quiet operation - errors only
@@ -15,7 +15,7 @@ python jamf_interrogator.py --log-level info list computers
 python jamf_interrogator.py --log-level debug search scripts backup
 ```
 
-## daily checks
+## Daily checks
 
 ```bash
 # morning check - what's in the environment
@@ -26,7 +26,7 @@ python jamf_interrogator.py list computers | wc -l
 python jamf_interrogator.py search policies "software update"
 ```
 
-## before making changes
+## Before making changes
 
 ```bash
 # backup current config
@@ -36,7 +36,7 @@ python jamf_interrogator.py details policy 42 --save backups/policy_42_before.js
 python jamf_interrogator.py compare policy 42 43
 ```
 
-## troubleshooting
+## Troubleshooting
 
 ```bash
 # find computers that haven't checked in
@@ -48,7 +48,7 @@ python jamf_interrogator.py list policies --format json | \
   jq '.[] | select(.scripts[].id == 7)'
 ```
 
-## reporting
+## Reporting
 
 ```bash
 # export everything for analysis
@@ -60,7 +60,7 @@ python jamf_interrogator.py list scripts --format csv > reports/scripts.csv
 wc -l reports/*.csv
 ```
 
-## cleanup tasks
+## Cleanup tasks
 
 ```bash
 # find empty groups to potentially remove
@@ -70,9 +70,9 @@ python jamf_interrogator.py audit empty-groups > empty_groups.txt
 cat empty_groups.txt
 ```
 
-## using with other tools
+## Using with other tools
 
-### with jq for json filtering
+### With jq for json filtering
 
 ```bash
 # get just policy names and ids
@@ -84,7 +84,7 @@ python jamf_interrogator.py details policy 42 | \
   jq '.policy.scope'
 ```
 
-### with grep for quick searches
+### With grep for quick searches
 
 ```bash
 # find all adobe-related items
@@ -92,7 +92,7 @@ python jamf_interrogator.py list policies | grep -i adobe
 python jamf_interrogator.py list packages | grep -i adobe
 ```
 
-### with spreadsheets
+### With spreadsheets
 
 ```bash
 # export to csv and open in numbers
@@ -100,9 +100,9 @@ python jamf_interrogator.py list computers --format csv > computers.csv
 open -a Numbers computers.csv
 ```
 
-## scripting patterns
+## Scripting patterns
 
-### backup all policies
+### Sackup all policies
 
 ```bash
 #!/bin/zsh
@@ -114,7 +114,7 @@ for id in $(python jamf_interrogator.py list policies --format json | jq '.[].id
 done
 ```
 
-### weekly report
+### Weekly report
 
 ```bash
 #!/bin/zsh
@@ -149,22 +149,14 @@ python jamf_interrogator.py list policies --format json | \
   jq --arg pkg "$PACKAGE_NAME" '.[] | select(.packages[]?.name == $pkg) | {id, name}'
 ```
 
-## api limits and performance
+## API limits and performance
 
 - the jamf api has rate limits - be mindful when running bulk operations
 - for large exports, csv format is faster than json
 - use --save when fetching details to avoid re-querying
 - consider caching results for repeated analysis
 
-## tips from the trenches
-
-1. always backup configs before comparing or modifying
-2. use descriptive filenames when saving: `policy_42_prod_backup_20241113.json`
-3. pipe csv output to files rather than terminal for large lists
-4. combine with standard unix tools (grep, awk, sort) for quick filtering
-5. set up a weekly cron job for empty groups audit
-
-## error handling
+## Error handling
 
 ```bash
 # check if command succeeded
@@ -178,7 +170,7 @@ fi
 timeout 30s python jamf_interrogator.py list computers
 ```
 
-## keyboard shortcuts for terminal
+## Keyboard shortcuts for terminal
 
 when viewing long lists in terminal:
 
@@ -191,8 +183,3 @@ pipe to less for better navigation:
 ```bash
 python jamf_interrogator.py list policies | less
 ```
-
----
-
-remember: this tool queries the api, it doesn't modify anything.
-for changes, use the jamf web console or dedicated automation tools.

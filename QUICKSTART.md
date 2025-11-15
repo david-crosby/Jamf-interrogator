@@ -1,14 +1,16 @@
 # jamf interrogator - quick start
 
-get up and running in 2 minutes.
+TL/DR README.md then use this, get up and running in 2 minutes.
 
-## install
+WARNING: this is still WIP for me!
+
+## Install
 
 ```bash
 ./setup_interrogator.sh
 ```
 
-## configure
+## Configure
 
 edit `~/.jamf_interrogator.json`:
 ```json
@@ -20,13 +22,17 @@ edit `~/.jamf_interrogator.json`:
 }
 ```
 
-## test
+You will need to download jamfpy from: https://github.com/thejoeker12/jamfpy-python-sdk-jamfpro
+
+Thanks to @thejoeker12 for this!
+
+## Test
 
 ```bash
 python jamf_interrogator.py list policies
 ```
 
-## common commands
+## Common commands
 
 ```bash
 # list things
@@ -52,7 +58,7 @@ python jamf_interrogator.py audit empty-groups
 python jamf_interrogator.py list computers --format csv > computers.csv
 ```
 
-## logging
+## Logging
 
 ```bash
 # quiet (errors only)
@@ -65,7 +71,7 @@ python jamf_interrogator.py --log-level info list computers
 python jamf_interrogator.py --log-level debug search scripts test
 ```
 
-## help
+## Help
 
 ```bash
 python jamf_interrogator.py --help
