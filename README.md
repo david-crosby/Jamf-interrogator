@@ -213,11 +213,8 @@ the code is structured to make adding new commands straightforward:
 
 ## Author
 
-david crosby (bing)
-https://www.linkedin.com/in/david-bing-crosby/
-https://github.com/david-crosby
-
-amfpy (included in this repo) - Source thejoeker12/jamfpy-python-sdk-jamfpro
+David Crosby (Bing)
+jamfpy (included in this repo) - Source thejoeker12/jamfpy-python-sdk-jamfpro
 
 ## Licence
 
